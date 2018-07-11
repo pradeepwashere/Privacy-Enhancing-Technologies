@@ -33,27 +33,27 @@ def checkPrime(n):																# Function to Check for Primality
 					return False
 			return checkRabin(n)
 
-def checkRabin(n):															# Rabin Function  to Check for Primality 
-	phi = n-1
-	pow2 = 0
-	# while phi&1 ==0:
-	while phi%2 == 0 :				  #Find the exponent,phi in 2^{phi} 
-		phi=phi/2
-		pow2=pow2+1						# (n-1)  = (phi) * 2^(pow2)
-	checkCount = 0
-	while checkCount < 128:
-		a =random.randrange(2,n-1)   #Check 128 random bases to increase probability of correctness
-		rem = pow(a,phi,n)			 #Check for a^{d} = 1 mod n
-		if (rem != 1):				 #Check for Composite
-			i = 0
-			while rem!= (n-1):
-				if i == pow2-1:		# d.a^2, d.a^4, d.a^8. Only for (i == pow2) = > rem = n-1 = -1 mod n
-					return False
-				else:
-					i = i+1
-					rem = (rem**2)%n
-		checkCount = checkCount+2
-	return True
+# def checkRabin(n):															# Rabin Function  to Check for Primality 
+# 	phi = n-1
+# 	pow2 = 0
+# 	# while phi&1 ==0:
+# 	while phi%2 == 0 :				  #Find the exponent,phi in 2^{phi} 
+# 		phi=phi/2
+# 		pow2=pow2+1						# (n-1)  = (phi) * 2^(pow2)
+# 	checkCount = 0
+# 	while checkCount < 128:
+# 		a =random.randrange(2,n-1)   #Check 128 random bases to increase probability of correctness
+# 		rem = pow(a,phi,n)			 #Check for a^{d} = 1 mod n
+# 		if (rem != 1):				 #Check for Composite
+# 			i = 0
+# 			while rem!= (n-1):
+# 				if i == pow2-1:		# d.a^2, d.a^4, d.a^8. Only for (i == pow2) = > rem = n-1 = -1 mod n
+# 					return False
+# 				else:
+# 					i = i+1
+# 					rem = (rem**2)%n
+# 		checkCount = checkCount+2
+# 	return True
 
 
 def gen():
